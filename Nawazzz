@@ -1,0 +1,1 @@
+*/5 * * * * python3 /home/ec2-user/netguard/monitor.py >> /home/ec2-user/netguard/output.log 2>&1

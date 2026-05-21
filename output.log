@@ -1,0 +1,294 @@
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 14:20:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 14:25:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 14:30:03 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 14:35:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 14:40:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 14:45:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 14:50:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 14:55:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 15:00:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 15:05:01 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 15:10:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 15:15:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 15:20:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.
+/home/ec2-user/.local/lib/python3.9/site-packages/boto3/compat.py:89: PythonDeprecationWarning: Boto3 will no longer support Python 3.9 starting April 29, 2026. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.10 or later. More information can be found here: https://aws.amazon.com/blogs/developer/python-support-policy-updates-for-aws-sdks-and-tools/
+  warnings.warn(warning, PythonDeprecationWarning)
+
+=============================================
+  NetGuard Monitor — 15:25:02 UTC
+=============================================
+  UP ✅  Google DNS (8.8.8.8)
+Traceback (most recent call last):
+  File "/home/ec2-user/netguard/monitor.py", line 111, in <module>
+    run()
+  File "/home/ec2-user/netguard/monitor.py", line 89, in run
+    push_metric(name, is_up)
+  File "/home/ec2-user/netguard/monitor.py", line 54, in push_metric
+    cw.put_metric_data(
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.9/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the PutMetricData operation: The security token included in the request is invalid.

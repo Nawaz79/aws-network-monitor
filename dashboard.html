@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NetGuard — AWS Network Monitor</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+:root{--bg:#07090f;--card:#0d1117;--border:#161b22;--border2:#21262d;--accent:#58a6ff;--purple:#a371f7;--green:#3fb950;--red:#f85149;--yellow:#d29922;--text:#c9d1d9;--muted:#484f58;--white:#f0f6fc;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--text);min-height:100vh;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(600px circle at 10% 20%,rgba(88,166,255,0.05),transparent 50%),radial-gradient(400px circle at 85% 75%,rgba(163,113,247,0.04),transparent 50%);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;border-bottom:1px solid var(--border);background:rgba(7,9,15,0.9);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;}
+.nav-left{display:flex;align-items:center;gap:10px;}
+.nav-logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1f6feb,#a371f7);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.nav-title{font-size:16px;font-weight:700;color:var(--white);letter-spacing:-0.2px;}
+.nav-sub{font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:1px;}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.chip{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;background:rgba(63,185,80,0.1);border:1px solid rgba(63,185,80,0.2);font-size:11px;font-weight:600;color:var(--green);letter-spacing:0.5px;}
+.blink{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+#clock{font-family:'JetBrains Mono';font-size:12px;color:var(--muted);}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 28px 40px;}
+.ph{margin-bottom:22px;}
+.pt{font-size:22px;font-weight:700;color:var(--white);letter-spacing:-0.4px;}
+.pt span{color:var(--accent);}
+.pd{font-size:13px;color:var(--muted);margin-top:4px;}
+.pa{font-size:12px;color:var(--muted);margin-top:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.pa strong{color:var(--text);}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:500;background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.2);color:var(--accent);}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.kpi{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:18px 20px;position:relative;overflow:hidden;transition:transform 0.2s;}
+.kpi:hover{transform:translateY(-2px);}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--kc,var(--accent)),transparent);opacity:0.7;}
+.kpi-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.kpi-lbl{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;}
+.kpi-ico{font-size:15px;}
+.kpi-val{font-size:28px;font-weight:700;color:var(--white);letter-spacing:-0.5px;line-height:1;}
+.ku{font-size:14px;font-weight:400;color:var(--muted);}
+.kpi-ft{font-size:11px;font-weight:600;margin-top:5px;}
+.fg{color:var(--green);}.fr{color:var(--red);}.fb{color:var(--accent);}
+.mg{display:grid;grid-template-columns:1fr 316px;gap:14px;margin-bottom:14px;}
+.bg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.card{background:var(--card);border:1px solid var(--border2);border-radius:10px;overflow:hidden;}
+.ch{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--border);}
+.ct{font-size:13px;font-weight:600;color:var(--white);display:flex;align-items:center;gap:8px;}
+.dot{width:7px;height:7px;border-radius:50%;}
+.dg{background:var(--green);box-shadow:0 0 5px var(--green);}.db{background:var(--accent);box-shadow:0 0 5px var(--accent);}
+.cb{padding:18px;}
+.host{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);}
+.host:last-child{border-bottom:none;}
+.hl{display:flex;align-items:center;gap:11px;}
+.hico{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ig{background:rgba(63,185,80,0.1);}.ir{background:rgba(248,81,73,0.1);}.iy{background:rgba(210,153,34,0.1);}
+.hn{font-size:13px;font-weight:600;color:var(--white);}
+.hip{font-size:11px;color:var(--muted);font-family:'JetBrains Mono';margin-top:2px;}
+.hr{display:flex;align-items:center;gap:10px;}
+.lat{font-family:'JetBrains Mono';font-size:12px;font-weight:600;min-width:44px;text-align:right;}
+.lg{color:var(--green);}.lb{color:var(--accent);}.ly{color:var(--yellow);}.lr{color:var(--red);}
+.bdg{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:0.5px;}
+.bg2{background:rgba(63,185,80,0.1);color:var(--green);border:1px solid rgba(63,185,80,0.2);}
+.br{background:rgba(248,81,73,0.1);color:var(--red);border:1px solid rgba(248,81,73,0.2);}
+.by{background:rgba(210,153,34,0.1);color:var(--yellow);border:1px solid rgba(210,153,34,0.2);}
+.flow{display:flex;align-items:center;gap:6px;margin-bottom:14px;}
+.fb2{flex:1;background:#0a0c10;border:1px solid var(--border2);border-radius:8px;padding:12px 8px;text-align:center;}
+.fem{font-size:20px;margin-bottom:6px;}
+.fnm{font-size:11px;font-weight:700;color:var(--white);letter-spacing:0.3px;}
+.fds{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4;}
+.farr{color:var(--border2);font-size:14px;flex-shrink:0;}
+.sbox{background:#0a0c10;border:1px solid var(--border);border-radius:8px;padding:12px;font-size:12px;color:var(--muted);line-height:1.7;}
+.sbox span{color:var(--text);}
+.svc{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.svc:last-child{border-bottom:none;}
+.svn{color:var(--text);font-weight:500;display:flex;align-items:center;gap:8px;}
+canvas{display:block;width:100%!important;}
+.clbl{display:flex;justify-content:space-between;font-size:10px;font-family:'JetBrains Mono';color:var(--muted);margin-top:5px;}
+.log-s{max-height:195px;overflow-y:auto;}
+.log-s::-webkit-scrollbar{width:3px;}
+.log-s::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px;}
+.ll{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid rgba(22,27,34,0.8);font-size:11px;font-family:'JetBrains Mono';}
+.ll:last-child{border-bottom:none;}
+.lt{color:var(--muted);flex-shrink:0;}
+.lok{color:var(--green);}.ler{color:var(--red);}.lin{color:var(--accent);}.lwn{color:var(--yellow);}
+.al{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);}
+.al:last-child{border-bottom:none;}
+.aic{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.air{background:rgba(248,81,73,0.1);}.aiy{background:rgba(210,153,34,0.1);}.aig{background:rgba(63,185,80,0.1);}
+.am{font-size:12px;font-weight:500;color:var(--text);line-height:1.4;}
+.at2{font-size:10px;color:var(--muted);font-family:'JetBrains Mono';margin-top:3px;}
+.btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:5px 12px;border-radius:6px;font-size:11px;font-family:'Inter';font-weight:500;cursor:pointer;transition:all 0.15s;letter-spacing:0.3px;}
+.btn:hover{border-color:var(--accent);color:var(--accent);}
+@media(max-width:880px){.kpi-grid{grid-template-columns:repeat(2,1fr);}.mg{grid-template-columns:1fr;}.bg{grid-template-columns:1fr;}.wrap{padding:14px;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">🛡️</div>
+    <div><div class="nav-title">NetGuard</div><div class="nav-sub">AWS NETWORK MONITOR</div></div>
+  </div>
+  <div class="nav-right">
+    <div class="chip"><div class="blink"></div>LIVE</div>
+    <div id="clock">--:--:-- UTC</div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="ph">
+    <div class="pt">Infrastructure <span>Status</span> Dashboard</div>
+    <div class="pd">Automated monitoring — detects issues before the customer does</div>
+    <div class="pa">
+      Built by <strong>Nawaz Syed</strong>
+      <span class="tag">Network Engineer → Cloud/DevOps</span>
+      <span class="tag">HCLTech · Verizon Business</span>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi" style="--kc:var(--green)">
+      <div class="kpi-top"><div class="kpi-lbl">Online</div><div class="kpi-ico">🟢</div></div>
+      <div class="kpi-val" id="kv1">4</div>
+      <div class="kpi-ft fg">↑ hosts reachable</div>
+    </div>
+    <div class="kpi" style="--kc:var(--red)">
+      <div class="kpi-top"><div class="kpi-lbl">Down</div><div class="kpi-ico">🔴</div></div>
+      <div class="kpi-val" id="kv2">1</div>
+      <div class="kpi-ft fr">↓ SNS alert fired</div>
+    </div>
+    <div class="kpi" style="--kc:var(--accent)">
+      <div class="kpi-top"><div class="kpi-lbl">Avg Latency</div><div class="kpi-ico">⚡</div></div>
+      <div class="kpi-val" id="kv3">12<span class="ku">ms</span></div>
+      <div class="kpi-ft fb">↗ excellent</div>
+    </div>
+    <div class="kpi" style="--kc:var(--purple)">
+      <div class="kpi-top"><div class="kpi-lbl">30-Day Uptime</div><div class="kpi-ico">📊</div></div>
+      <div class="kpi-val">99<span class="ku">.2%</span></div>
+      <div class="kpi-ft fg">↑ above SLA</div>
+    </div>
+  </div>
+
+  <div class="mg">
+    <div class="card">
+      <div class="ch">
+        <div class="ct"><div class="dot dg"></div>Host Status</div>
+        <button class="btn" onclick="refresh()">↺ Refresh</button>
+      </div>
+      <div class="cb" id="hlist"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="card">
+        <div class="ch"><div class="ct"><div class="dot db"></div>How It Works</div></div>
+        <div class="cb">
+          <div class="flow">
+            <div class="fb2"><div class="fem">🔍</div><div class="fnm">MONITOR</div><div class="fds">Ping hosts<br/>every 5 min</div></div>
+            <div class="farr">→</div>
+            <div class="fb2"><div class="fem">🔔</div><div class="fnm">ALERT</div><div class="fds">Email via<br/>AWS SNS</div></div>
+            <div class="farr">→</div>
+            <div class="fb2"><div class="fem">💾</div><div class="fnm">LOG</div><div class="fds">Save to<br/>S3 bucket</div></div>
+          </div>
+          <div class="sbox">💡 <span>Problem I solved:</span> At HCLTech I manually checked if Verizon's network was up. I automated this using AWS EC2, SNS, CloudWatch and S3.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct"><div class="dot db"></div>AWS Services</div></div>
+        <div class="cb">
+          <div class="svc"><div class="svn">📊 CloudWatch</div><span class="bdg bg2">ACTIVE</span></div>
+          <div class="svc"><div class="svn">📧 SNS Alerts</div><span class="bdg bg2">ACTIVE</span></div>
+          <div class="svc"><div class="svn">🪣 S3 Logging</div><span class="bdg bg2">ACTIVE</span></div>
+          <div class="svc"><div class="svn">🖥️ EC2 t2.micro</div><span class="bdg bg2">RUNNING</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg">
+    <div class="card">
+      <div class="ch"><div class="ct"><div class="dot db"></div>Network Traffic</div><span style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono'">LIVE</span></div>
+      <div class="cb"><canvas id="chart" height="130"></canvas><div class="clbl" id="clbl"></div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct"><div class="dot dg"></div>Live Log</div></div>
+      <div class="cb"><div class="log-s" id="lf"></div></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct"><div class="dot db"></div>Recent Alerts</div></div>
+      <div class="cb" id="alist"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+setInterval(()=>{document.getElementById('clock').textContent=new Date().toUTCString().slice(17,25)+' UTC';},1000);
+
+const hosts=[
+  {n:'EC2 Web Server',ip:'172.31.10.5', s:'up',  l:8,  i:'🖥️'},
+  {n:'EC2 App Server',ip:'172.31.10.6', s:'up',  l:11, i:'⚙️'},
+  {n:'RDS Database',  ip:'172.31.20.10',s:'up',  l:4,  i:'🗄️'},
+  {n:'NAT Gateway',   ip:'172.31.0.1',  s:'down',l:null,i:'🌐'},
+  {n:'VPN Endpoint',  ip:'52.14.88.201',s:'up',  l:24, i:'🔒'},
+];
+
+function lc(l){if(!l)return'lr';if(l<10)return'lg';if(l<20)return'lb';if(l<50)return'ly';return'lr';}
+
+function rHosts(){
+  document.getElementById('hlist').innerHTML=hosts.map(h=>`
+    <div class="host">
+      <div class="hl">
+        <div class="hico ${h.s==='up'?'ig':h.s==='down'?'ir':'iy'}">${h.i}</div>
+        <div><div class="hn">${h.n}</div><div class="hip">${h.ip}</div></div>
+      </div>
+      <div class="hr">
+        <span class="lat ${lc(h.l)}">${h.l?h.l+'ms':'—'}</span>
+        <span class="bdg ${h.s==='up'?'bg2':h.s==='down'?'br':'by'}">${h.s.toUpperCase()}</span>
+      </div>
+    </div>`).join('');
+  const up=hosts.filter(h=>h.s==='up');
+  document.getElementById('kv1').textContent=up.length;
+  document.getElementById('kv2').textContent=hosts.length-up.length;
+  const lats=up.filter(h=>h.l);
+  const avg=Math.round(lats.reduce((s,h)=>s+h.l,0)/lats.length);
+  document.getElementById('kv3').innerHTML=avg+'<span class="ku">ms</span>';
+}
+
+function refresh(){
+  hosts.forEach(h=>{if(h.s==='up')h.l=Math.floor(Math.random()*35)+3;});
+  rHosts(); addLog('Manual refresh — '+hosts.filter(h=>h.s==='up').length+'/'+hosts.length+' UP','in'); drawChart();
+}
+
+const logs=[
+  {t:'14:35:01',m:'All hosts pinged — 4/5 UP',c:'ok'},
+  {t:'14:30:45',m:'NAT Gateway DOWN → SNS alert sent',c:'er'},
+  {t:'14:30:44',m:'CloudWatch metrics pushed (5 hosts)',c:'in'},
+  {t:'14:30:40',m:'Log saved → s3://netguard-logs/...',c:'in'},
+  {t:'14:25:01',m:'All hosts pinged — 5/5 UP',c:'ok'},
+  {t:'14:15:00',m:'Monitor started on EC2 t2.micro',c:'in'},
+];
+function rLogs(){
+  document.getElementById('lf').innerHTML=logs.map(l=>`
+    <div class="ll"><span class="lt">${l.t}</span><span class="l${l.c}">${l.c==='ok'?'✓':l.c==='er'?'✗':'›'} ${l.m}</span></div>`).join('');
+}
+function addLog(m,c){
+  logs.unshift({t:new Date().toUTCString().slice(17,25),m,c});
+  if(logs.length>14)logs.pop(); rLogs();
+}
+
+document.getElementById('alist').innerHTML=[
+  {i:'🔴',c:'air',m:'NAT Gateway unreachable',t:'14:30:45 UTC'},
+  {i:'🟡',c:'aiy',m:'VPN latency spike >80ms',t:'13:12:22 UTC'},
+  {i:'🟢',c:'aig',m:'All services recovered',t:'12:00:00 UTC'},
+].map(a=>`<div class="al"><div class="aic ${a.c}">${a.i}</div><div><div class="am">${a.m}</div><div class="at2">${a.t}</div></div></div>`).join('');
+
+let cd=Array.from({length:20},()=>20+Math.random()*60);
+function drawChart(){
+  cd.push(20+Math.random()*60); cd.shift();
+  const cv=document.getElementById('chart');
+  const W=cv.offsetWidth||340,H=130;
+  cv.width=W*devicePixelRatio; cv.height=H*devicePixelRatio;
+  const ctx=cv.getContext('2d'); ctx.scale(devicePixelRatio,devicePixelRatio);
+  const p=10,xs=cd.map((_,i)=>p+(i/(cd.length-1))*(W-p*2));
+  const mx=Math.max(...cd)+10,ys=cd.map(v=>H-p-(v/mx)*(H-p*2));
+  ctx.strokeStyle='rgba(33,38,45,0.6)'; ctx.lineWidth=1;
+  [0.25,0.5,0.75].forEach(f=>{const y=p+(1-f)*(H-p*2);ctx.beginPath();ctx.moveTo(p,y);ctx.lineTo(W-p,y);ctx.stroke();});
+  const g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'rgba(88,166,255,0.18)'); g.addColorStop(1,'rgba(88,166,255,0)');
+  ctx.beginPath(); ctx.moveTo(xs[0],ys[0]);
+  for(let i=1;i<xs.length;i++){const cx=(xs[i-1]+xs[i])/2;ctx.bezierCurveTo(cx,ys[i-1],cx,ys[i],xs[i],ys[i]);}
+  ctx.lineTo(xs[xs.length-1],H); ctx.lineTo(xs[0],H); ctx.closePath(); ctx.fillStyle=g; ctx.fill();
+  ctx.beginPath(); ctx.moveTo(xs[0],ys[0]);
+  for(let i=1;i<xs.length;i++){const cx=(xs[i-1]+xs[i])/2;ctx.bezierCurveTo(cx,ys[i-1],cx,ys[i],xs[i],ys[i]);}
+  ctx.strokeStyle='#58a6ff'; ctx.lineWidth=1.5; ctx.shadowBlur=8; ctx.shadowColor='rgba(88,166,255,0.5)'; ctx.stroke(); ctx.shadowBlur=0;
+  ctx.beginPath(); ctx.arc(xs[xs.length-1],ys[ys.length-1],4,0,Math.PI*2);
+  ctx.fillStyle='#58a6ff'; ctx.shadowBlur=10; ctx.shadowColor='#58a6ff'; ctx.fill();
+  document.getElementById('clbl').innerHTML=cd.filter((_,i)=>i%5===0).map((_,i)=>`<span>${(19-i*5)*5}s</span>`).join('');
+}
+
+rHosts(); rLogs(); drawChart();
+setInterval(()=>{drawChart(); addLog('Monitor cycle — '+hosts.filter(h=>h.s==='up').length+'/'+hosts.length+' UP','ok');},30000);
+</script>
+</body>
+</html>
+
